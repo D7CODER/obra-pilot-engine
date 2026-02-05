@@ -1,11 +1,4 @@
-FROM python:3.11-slim
+FROM ghcr.io/all-hands-ai/openhands:0.8_amd64
 
-WORKDIR /app
-
-COPY pyproject.toml poetry.lock uv.lock ./
-RUN pip install --no-cache-dir uv && uv pip install --system --no-deps .
-
-COPY . .
-
-EXPOSE 8000
-CMD ["python", "-m", "openhands"]
+EXPOSE 3000
+ENV PORT=3000
